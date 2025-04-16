@@ -1,0 +1,56 @@
+@startuml
+title Society Management System - Sequence Diagram (Simplified)
+
+actor User
+participant "Login & Role Selection" as LoginRole
+participant "Admin Panel" as Admin
+participant "Maintenance Panel" as Maint
+participant "Resident Panel" as Resident
+participant "Server (API + DB)" as Server
+
+== Login and Role Selection ==
+User -> LoginRole: Launch App
+User -> LoginRole: Enter Credentials
+LoginRole -> Server: Authenticate User
+Server --> LoginRole: Auth Success/Failure
+LoginRole -> User: Choose Role
+
+== Admin Workflow ==
+alt if Role == Admin
+    LoginRole -> Admin: Open Dashboard
+    Admin -> Server: Fetch Residents
+    Server --> Admin: List of Residents
+    Admin -> Server: Fetch Maintenance Officers
+    Server --> Admin: List of Officers
+    Admin -> Server: Fetch Notices
+    Server --> Admin: List of Notices
+    Admin -> Server: Fetch Complaints/Feedback
+    Server --> Admin: Complaint List
+    User -> Admin: Perform Add/Edit Actions
+    Admin -> Server: Submit Changes
+    Server --> Admin: Operation Success
+end
+
+== Maintenance Workflow ==
+alt if Role == Maintenance Officer
+    LoginRole -> Maint: Open Dashboard
+    Maint -> Server: Fetch Maintenance Records
+    Server --> Maint: Records List
+    Maint -> Server: Fetch Profile
+    Server --> Maint: Profile Data
+    User -> Maint: Add Maintenance
+    Maint -> Server: Insert Maintenance
+    Server --> Maint: Insert Success
+end
+
+== Resident Workflow ==
+alt if Role == Resident
+    LoginRole -> Resident: Open Dashboard
+    Resident -> Server: Fetch Notices & Maintenance
+    Server --> Resident: Data List
+    User -> Resident: File Complaint/Feedback
+    Resident -> Server: Submit Complaint
+    Server --> Resident: Submit Success
+end
+
+@enduml

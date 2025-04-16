@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Society Management System</string>
+
+    <string-array name="type_of_feedback">
+        <item>Select Your Type</item>
+        <item>Feedback</item>
+        <item>Complaint</item>
+    </string-array>
+</resources>

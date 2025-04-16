@@ -1,0 +1,74 @@
+@startuml
+' Modern actor icons
+skinparam actorStyle awesome
+skinparam rectangle {
+  roundCorner 15
+}
+
+' Set overall direction so actors can appear on different sides
+left to right direction
+
+' Define actors
+actor "Admin" as Admin
+actor "Maintenance Officer" as MaintOff
+actor "Resident" as Resident
+
+' Define system boundary and vertically ordered use cases
+rectangle "Society Management System" as SMS {
+  usecase "View Residents" as UC1
+  usecase "Add Resident" as UC2
+  usecase "View Maintenance Officers" as UC3
+  usecase "Add Maintenance Officer" as UC4
+  usecase "View Notices" as UC5
+  usecase "Add Notice" as UC6
+  usecase "View Complaint/Feedback" as UC7
+  usecase "View Maintenance" as UC8
+  usecase "Add Maintenance" as UC9
+  usecase "View Profile" as UC10
+  usecase "File Complaint/Feedback" as UC11
+  usecase "View Maintenance (Resident)" as UC12
+  usecase "View Notice (Resident)" as UC13
+}
+
+' === HIDDEN ARROWS FOR LAYOUT CONTROL ===
+' Push Admin to the LEFT of SMS
+Admin -[hidden]-> UC1
+Admin -[hidden]-> UC2
+Admin -[hidden]-> UC3
+Admin -[hidden]-> UC4
+Admin -[hidden]-> UC5
+Admin -[hidden]-> UC6
+Admin -[hidden]-> UC7
+
+' Push Maintenance Officer to the RIGHT of SMS
+UC8 -[hidden]-> MaintOff
+UC9 -[hidden]-> MaintOff
+UC10 -[hidden]-> MaintOff
+
+' Push Resident to the RIGHT of SMS
+UC11 -[hidden]-> Resident
+UC12 -[hidden]-> Resident
+UC13 -[hidden]-> Resident
+
+' === ACTUAL CONNECTIONS ===
+' Admin use cases
+Admin --> UC1
+Admin --> UC2
+Admin --> UC3
+Admin --> UC4
+Admin --> UC5
+Admin --> UC6
+Admin --> UC7
+
+' Maintenance Officer use cases
+UC8 <-- MaintOff
+UC9 <-- MaintOff
+UC10 <-- MaintOff
+
+' Resident use cases
+UC10 <-- Resident
+UC11 <-- Resident
+UC12 <-- Resident
+UC13 <-- Resident
+
+@enduml

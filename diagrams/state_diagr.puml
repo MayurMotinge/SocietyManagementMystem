@@ -1,0 +1,25 @@
+@startuml
+title Workflow - Society Management System App
+
+start
+:User launches App;
+:Login;
+fork
+  :Admin Workflow;
+  :View/Add Residents;
+  :View/Add Maintenance Officers;
+  :View/Add Notices;
+  :View Complaint/Feedback;
+fork again
+  :Maintenance Officer Workflow;
+  :View Maintenance;
+  :Add Maintenance;
+  :View Profile;
+fork again
+  :Resident Workflow;
+  :File Complaint/Feedback;
+  :View Maintenance Details;
+  :View Notices;
+end fork
+stop
+@enduml

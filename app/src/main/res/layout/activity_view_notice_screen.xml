@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Admin.Notice.ViewNoticeScreen">
+
+    <androidx.appcompat.widget.SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchview_notice"
+        app:queryHint="Search date,time,title,description"
+        android:padding="4dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/tv_bg"
+        app:iconifiedByDefault="false"
+        />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lv_all_notice"
+        android:layout_below="@+id/searchview_notice"/>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progress"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_no_record"
+        android:text="No Record"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:fontFamily="sans-serif-condensed-medium"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_add_notice"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:text="Add notice"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="64dp"
+        android:padding="12dp"
+        android:textAllCaps="false"
+        android:background="@drawable/btn_bg_shape"
+        />
+
+</RelativeLayout>

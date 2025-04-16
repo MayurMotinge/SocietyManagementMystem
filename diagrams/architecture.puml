@@ -1,0 +1,31 @@
+@startuml
+title Society Management System - Vertical Architecture Diagram
+
+skinparam rectangle {
+  roundCorner 15
+  shadowing true
+}
+skinparam component {
+  shadowing true
+}
+
+' Force top-to-bottom layout using hidden links
+database "MySQL Database" as DB
+node "Server" {
+  [PHP Backend API] as API
+}
+node "Android Device" {
+  [Society Management App\n(Android)] as APP
+}
+
+
+
+' === Invisible arrows to enforce vertical layout ===
+DB -[hidden]-> API
+API -[hidden]-> APP
+
+' === Actual connections ===
+APP --> API : HTTP (POST)
+API --> DB : SQL Queries
+
+@enduml
