@@ -2,7 +2,7 @@ package com.mountreachsolution.societymanagementsystem.Comman;
 
 public class Config {
 
-    private static String OnlineAddress = "http://192.168.119.119:80/societymanagementsystem/";
+    private static String OnlineAddress = "http://192.168.25.119:80/societymanagementsystem/";
     //users
     public static String url_addusers = OnlineAddress+ "registerUser.php";
     public static String url_login = OnlineAddress+ "loginUser.php";
